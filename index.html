@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMNOQ Skybar Kolkata | Premium Rooftop Bar & Fine Dining</title>
+    <meta name="description" content="Experience cocktails, panoramic skyline views, and gourmet dining at LMNOQ Skybar — Kolkata's premier rooftop destination with live music and sophisticated ambiance.">
+    <meta name="keywords" content="LMNOQ Skybar Kolkata, rooftop bar Kolkata, fine dining Kolkata, live music bar Kolkata, cocktails Kolkata, nightlife Kolkata">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1cbfc8;
+            --primary-dark: #159ca3;
+            --dark: #0a0a14;
+            --darker: #050508;
+            --accent: #8a2be2;
+            --gold: #d4af37;
+            --light: #f5f5f5;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(28, 191, 200, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Page Loader */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 30px rgba(28, 191, 200, 0.5);
+        }
+        
+        .loader-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--light);
+        }
+        
+        .loader-dots {
+            display: flex;
+            margin-top: 20px;
+            gap: 8px;
+        }
+        
+        .loader-dots span {
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+            animation: bounce 1.5s infinite ease-in-out;
+        }
+        
+        .loader-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        
+        .loader-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Constellation Background */
+        #constellation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+        
+        .star::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 8, 0.9);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 0 15px rgba(28, 191, 200, 0.5);
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(10, 10, 20, 0.7), rgba(5, 5, 8, 0.9)), url('https://res.cloudinary.com/dokuekd32/image/upload/v1761198858/the-look-and-feel-of_aeki5c.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--darker) 100%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 0 0 20px rgba(28, 191, 200, 0.6);
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Sharp Edged Button */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            margin: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: 0.8s;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(28, 191, 200, 0.1);
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--darker);
+            position: relative;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            height: 450px;
+            background: url('https://res.cloudinary.com/dokuekd32/image/upload/v1761198859/the-look-and-feel-of_1_jxnsxa.jpg');
+            background-size: cover;
+            background-position: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(28, 191, 200, 0.1), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .about-image:hover::after {
+            opacity: 1;
+        }
+        
+        .about-image:hover {
+            transform: translateY(-10px);
+        }
+        
+        .featured-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dotted var(--primary);
+            transition: var(--transition);
+        }
+        
+        .featured-link:hover {
+            color: var(--gold);
+            border-bottom: 1px solid var(--gold);
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            background: var(--dark);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .gallery-item:active {
+            transform: scale(0.98);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-caption {
+            color: white;
+            font-weight: 600;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        /* Experience Video Section */
+        .experience {
+            background: var(--darker);
+            padding: 80px 0;
+        }
+        
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .video-wrapper video {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 15px;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .play-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .video-caption {
+            text-align: center;
+            margin-top: 15px;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        
+        /* Features Section */
+        .features {
+            background: var(--dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-category {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .feature-category:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-category:active {
+            transform: scale(0.98);
+        }
+        
+        .feature-category h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .feature-list {
+            list-style-type: none;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            padding-left: 25px;
+            transition: var(--transition);
+        }
+        
+        .feature-list li:hover {
+            color: var(--primary);
+            padding-left: 30px;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .feature-list li:hover::before {
+            transform: scale(1.2);
+        }
+        
+        /* Awards & Recognition Section */
+        .awards {
+            background: var(--darker);
+            text-align: center;
+        }
+        
+        .awards-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .award-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            min-width: 220px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .award-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .award-card:active {
+            transform: scale(0.98);
+        }
+        
+        .award-position {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .award-category {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .award-total {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        .rating-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 35px;
+            text-align: center;
+            min-width: 220px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .rating-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        
+        .rating-card:active {
+            transform: scale(0.98);
+        }
+        
+        .rating-value {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .rating-platform {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--gold);
+            font-weight: 600;
+        }
+        
+        .review-count {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--dark);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-details {
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(28, 191, 200, 0.3);
+        }
+        
+        .map-container {
+            flex: 1;
+            min-width: 300px;
+            height: 450px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .map-container:hover {
+            transform: translateY(-10px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 60px 0 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.8;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            opacity: 1;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            margin-bottom: 30px;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin: 0 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(28, 191, 200, 0.4);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--darker);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .hero-stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .video-wrapper video {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 14px 25px;
+                font-size: 0.85rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .video-wrapper video {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-logo">L</div>
+        <div class="loader-text">LMNOQ SKYBAR</div>
+        <div class="loader-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- Constellation Background -->
+    <div id="constellation"></div>
+
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-img">L</div>
+                <a href="#" class="logo">LMNOQ <span>Skybar</span></a>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#awards">Awards</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>LMNOQ Skybar</h1>
+            <p>Kolkata's Skyline Sanctuary • Elevated Social Experiences</p>
+            <div class="hero-buttons">
+                <a href="https://www.zomato.com/kolkata/lmnoq-park-street-area/book" class="btn btn-primary" target="_blank">Reserve a Table</a>
+                <a href="https://www.zomato.com/kolkata/lmnoq-park-street-area/menu" class="btn btn-secondary" target="_blank">View Menu</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">4.8</span>
+                    <span class="stat-label">Guest Rating</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">5-Star Reviews</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">#1</span>
+                    <span class="stat-label">Rooftop Bar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Perched high above the vibrant cityscape of Kolkata, LMNOQ Skybar offers an unparalleled rooftop experience that tantalizes all senses. Our sophisticated ambiance combines modern elegance with breathtaking panoramic views, creating the perfect backdrop for unforgettable evenings.</p>
+                    <p>Indulge in our expertly crafted cocktails, curated by master mixologists, and savor gourmet dishes that fuse global flavors with local ingredients. As night falls, our venue transforms with live music performances and DJ sets that energize the atmosphere, making LMNOQ the ultimate destination for those seeking elevated social experiences.</p>
+                    <p>Featured in <a href="https://www.whatshot.in/kolkata/kolkatas-newest-skybar-lmnoq-promises-a-dazzling-city-skyline-with-dj-cocktails--delicious-food-v-170615" class="featured-link" target="_blank">Whatshot Kolkata</a>, we've quickly become the city's most talked-about social hotspot, where connections are forged and celebrations come alive under the stars.</p>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <div class="section-subtitle">A visual journey through our stunning venue and offerings</div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/dokuekd32/image/upload/v1761198858/unnamed_ep3xck.webp" alt="LMNOQ Skybar Interior">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Sophisticated Interior</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/dokuekd32/image/upload/v1761198858/unnamed_2_cikjy3.webp" alt="Cocktails at LMNOQ">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Signature Cocktails</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/dokuekd32/image/upload/v1761198858/unnamed_1_rtqs3c.webp" alt="Skybar View">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Panoramic Views</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/dokuekd32/image/upload/v1761198858/the-look-and-feel-of_2_qzmmee.jpg" alt="Live Music">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Live Music Nights</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/dokuekd32/image/upload/v1761199803/unnamed_3_flnzzi.webp" alt="Gourmet Food">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Gourmet Cuisine</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://res.cloudinary.com/dokuekd32/image/upload/v1761199801/unnamed_4_wxcyln.webp" alt="Ambiance">
+                    <div class="gallery-overlay">
+                        <div class="gallery-caption">Elegant Ambiance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Video Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>The Experience</h2>
+                <div class="section-subtitle">A Cinematic Journey Through LMNOQ Skybar</div>
+            </div>
+            <div class="video-container">
+                <div class="video-wrapper">
+                    <video controls autoplay muted loop poster="https://res.cloudinary.com/dokuekd32/image/upload/v1761198858/the-look-and-feel-of_2_qzmmee.jpg">
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-celebrating-at-a-rooftop-bar-45370-large.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="video-overlay">
+                        <div class="play-indicator">
+                            <i class="fas fa-play"></i>
+                            <span>Now Playing</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="video-caption">Experience an evening at LMNOQ Skybar - where the city's skyline becomes your backdrop</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features & Highlights -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Features & Highlights</h2>
+                <div class="section-subtitle">Everything you need for an exceptional experience</div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-category">
+                    <h3>Accessibility</h3>
+                    <ul class="feature-list">
+                        <li>Wheelchair-accessible toilet</li>
+                        <li>Wheelchair-accessible seating</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Service Options</h3>
+                    <ul class="feature-list">
+                        <li>Outdoor seating</li>
+                        <li>Takeaway</li>
+                        <li>Dine-in</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Highlights</h3>
+                    <ul class="feature-list">
+                        <li>Great beer selection</li>
+                        <li>Great dessert</li>
+                        <li>Great wine list</li>
+                        <li>Live music</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Offerings</h3>
+                    <ul class="feature-list">
+                        <li>Alcohol</li>
+                        <li>All you can eat</li>
+                        <li>Beer</li>
+                        <li>Cocktails</li>
+                        <li>Coffee</li>
+                        <li>Happy-hour drinks</li>
+                        <li>Late-night food</li>
+                        <li>Quick bite</li>
+                        <li>Small plates</li>
+                        <li>Spirits</li>
+                        <li>Wine</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Atmosphere</h3>
+                    <ul class="feature-list">
+                        <li>Casual</li>
+                        <li>Cozy</li>
+                        <li>Romantic</li>
+                        <li>Trendy</li>
+                        <li>Upmarket</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Suitable For</h3>
+                    <ul class="feature-list">
+                        <li>Groups</li>
+                        <li>Tourists</li>
+                        <li>University students</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Dining Options</h3>
+                    <ul class="feature-list">
+                        <li>Brunch</li>
+                        <li>Lunch</li>
+                        <li>Dinner</li>
+                        <li>Dessert</li>
+                        <li>Table service</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Amenities</h3>
+                    <ul class="feature-list">
+                        <li>Bar on site</li>
+                        <li>Restroom</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Parking</h3>
+                    <ul class="feature-list">
+                        <li>Free parking lot</li>
+                        <li>Free street parking</li>
+                        <li>Paid street parking</li>
+                        <li>Plenty of parking</li>
+                        <li>Valet parking</li>
+                    </ul>
+                </div>
+                <div class="feature-category">
+                    <h3>Payments</h3>
+                    <ul class="feature-list">
+                        <li>Credit cards</li>
+                        <li>Debit cards</li>
+                        <li>NFC mobile payments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards & Recognition Section -->
+    <section class="awards" id="awards">
+        <div class="container">
+            <div class="section-title">
+                <h2>Awards & Recognition</h2>
+                <div class="section-subtitle">Celebrating excellence in hospitality and dining</div>
+            </div>
+            <div class="awards-container">
+                <div class="award-card">
+                    <div class="award-position">#890</div>
+                    <div class="award-category">Restaurants in Kolkata</div>
+                    <div class="award-total">of 18,490 restaurants</div>
+                    <div class="award-total">3,055 votes</div>
+                </div>
+                <div class="award-card">
+                    <div class="award-position">#383</div>
+                    <div class="award-category">Clubs in Kolkata</div>
+                    <div class="award-total">of 1,407 clubs</div>
+                </div>
+                <div class="award-card">
+                    <div class="award-position">#310</div>
+                    <div class="award-category">Italian Restaurants</div>
+                    <div class="award-total">of 906 Italian restaurants</div>
+                </div>
+            </div>
+            <div class="awards-container">
+                <div class="rating-card">
+                    <div class="rating-value">3.7</div>
+                    <div class="rating-platform">Google</div>
+                    <div class="review-count">1,819 Reviews</div>
+                </div>
+                <div class="rating-card">
+                    <div class="rating-value">3.6</div>
+                    <div class="rating-platform">Zomato</div>
+                    <div class="review-count">1.2K Reviews</div>
+                </div>
+                <div class="rating-card">
+                    <div class="rating-value">4.5</div>
+                    <div class="rating-platform">Magicpin</div>
+                    <div class="review-count">Menu & Reviews</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">Also find us on:</p>
+                <div>
+                    <a href="https://restaurant-guru.in/LMNOQ-Skybar-Kolkata" class="btn btn-secondary" target="_blank">Restaurant Guru</a>
+                    <a href="https://www.tripadvisor.in/Restaurant_Review-g304558-d23794374-Reviews-Lmnoq_Skybar-Kolkata_Calcutta_Kolkata_District_West_Bengal.html" class="btn btn-secondary" target="_blank">Tripadvisor</a>
+                    <a href="https://magicpin.in/Kolkata/Camac-Street-Area/Restaurant/Lmnoq-Skybar/store/91278c/menu/" class="btn btn-secondary" target="_blank">Magicpin Menu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Location -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact & Location</h2>
+                <div class="section-subtitle">Visit us or get in touch for reservations</div>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>09903040506</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div>
+                                <h3>Instagram</h3>
+                                <p>@lmnoq.kolkata</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reservation-info">
+                        <h3>Reservations</h3>
+                        <p>We recommend making dinner reservations in advance as we're often fully booked. For large groups or special events, please contact us at least 48 hours ahead.</p>
+                        <a href="https://www.zomato.com/kolkata/lmnoq-park-street-area/book" class="btn btn-primary" style="margin-top: 20px;" target="_blank">Make a Reservation</a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.396206274566!2d88.3523849!3d22.5509492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0277ff014ba367%3A0xec922a478f57ad11!2sLMNOQ%20Skybar!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>LMNOQ Skybar</h3>
+                    <p>Kolkata's premier rooftop destination offering cocktails, fine dining, and panoramic city views in an elegant atmosphere.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect With Us</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.instagram.com/lmnoq.kolkata/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.zomato.com/kolkata/lmnoq-park-street-area" target="_blank">Zomato</a></li>
+                        <li><a href="https://www.google.com/search?q=LMNOQ+Skybar" target="_blank">Google Reviews</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/lmnoq.kolkata/" class="social-link" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2026 LMNOQ Skybar. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        // Page Loader
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.page-loader');
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => loader.remove(), 500);
+            }, 1500);
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+                backToTop.classList.add('active');
+            } else {
+                header.classList.remove('scrolled');
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        
+        // Simple Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.about-content, .gallery-grid, .awards-container, .features-grid, .contact-container').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+        
+        // Constellation Background Animation
+        const constellation = document.getElementById('constellation');
+        const stars = [];
+        
+        // Create stars
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            
+            // Random position
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            
+            // Random size
+            const size = Math.random() * 2 + 1;
+            star.style.width = `${size}px`;
+            star.style.height = `${size}px`;
+            
+            // Random animation delay
+            star.style.animationDelay = `${Math.random() * 4}s`;
+            
+            constellation.appendChild(star);
+            stars.push({ element: star, x, y });
+        }
+        
+        // Mouse move effect
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            stars.forEach(star => {
+                const moveX = (mouseX - 0.5) * 20;
+                const moveY = (mouseY - 0.5) * 20;
+                
+                star.element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+
+        // Micro-interactions for clickable elements
+        document.querySelectorAll('.gallery-item, .feature-category, .award-card, .rating-card').forEach(element => {
+            element.addEventListener('mousedown', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            element.addEventListener('mouseup', function() {
+                this.style.transform = '';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
